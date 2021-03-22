@@ -1,6 +1,6 @@
 {
+  "homepage": "https://chawissa.github.io/add-product/",
   "name": "react-supermarket-app",
-  "homepage": "https://chawissa.github.io/add-product",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
