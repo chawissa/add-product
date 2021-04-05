@@ -19,18 +19,32 @@ export default function StoreFront() {
       setValidation("Please enter a description");
       return;
     }
-    setProducts([
-      ...products,
-      {
-        id: products.length + 1,
-        name: name,
-        description,
-        description,
+    fetch("https://api.learnjavascript.online/demo/react/admin/products", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
       },
-    ]);
-    setName("");
-    setDescription("");
-    setValidation("");
+      body: JSON.stringify({ name: name, description: description }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data) {
+          setProducts([
+            ...products,
+            {
+              id: products.length + 1,
+              name: name,
+              description,
+              description,
+            },
+          ]);
+          setName("");
+          setDescription("");
+          setValidation("");
+        }
+      })
+      .catch((err) => console.error(err));
   }
 
   function handleNameChange(event) {
